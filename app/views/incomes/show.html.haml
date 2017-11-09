@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Value:
+  = @income.value
+%p
+  %b Name:
+  = @income.name
+%p
+  %b Group:
+  = @income.group.name
+%p
+  %b Date:
+  = @income.date.to_date
+%p.hide
+  %b User:
+  = @income.user
+
+= link_to 'Edit', edit_income_path(@income)
+\|
+= link_to 'Back', incomes_path

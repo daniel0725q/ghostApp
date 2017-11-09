@@ -1,0 +1,25 @@
+%p#notice= notice
+
+%p
+  %b Start date:
+  = @report.start_date.to_date
+%p
+  %b End date:
+  = @report.end_date.to_date
+%p
+  %b Showing incomes
+  - @filtered_incomes.each do |income|
+    %br
+    = income.name + ": " + income.value.to_s
+%p
+  %b Showing expenditures
+  - @filtered_expenditures.each do |expenditure|
+    %br
+    = expenditure.name + ": " + expenditure.value.to_s
+%p.hide
+  %b User:
+  = @report.user
+
+= link_to 'Edit', edit_report_path(@report)
+\|
+= link_to 'Back', reports_path

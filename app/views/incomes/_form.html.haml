@@ -1,0 +1,33 @@
+= form_for @income do |f|
+  - if @income.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@income.errors.count, "error")} prohibited this income from being saved:"
+      %ul
+        - @income.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :value
+    .row
+      .col.s8
+        = f.number_field :value
+  .field
+    = f.label :name
+    .row
+      .col.s8
+        = f.text_field :name
+  .field
+    = f.label :group_id
+    .row
+      .col.s8
+        = f.select(:group_id, groups_for_select.sort)
+  .field
+    = f.label :date
+    .row
+      .col.s3
+        = f.date_field :date, :value=>Date.today
+  .field.hide
+    = f.label :user_id
+    = f.text_field :user_id, :readonly => true, :value => current_user.id
+  .actions
+    = f.submit 'Save'

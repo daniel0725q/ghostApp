@@ -1,0 +1,36 @@
+!!!
+%html
+  %head
+    %title GhostApp
+    = csrf_meta_tags
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application'
+
+  %body
+    = custom_bootstrap_flash
+    %nav
+      .nav-wrapper.container
+        %a.brand-logo{:href => "/"} ghostApp
+        %ul#nav-mobile.right.hide-on-med-and-down
+          %li
+            %a{:href => "/"} Home
+          - if user_signed_in?
+            %li
+              = link_to "Incomes", incomes_path
+            %li
+              = link_to "Expenditures", expenditures_path
+            %li
+              = link_to "Groups", groups_path
+            %li
+              = link_to "Reports", reports_path
+            %li
+              = link_to "My account", edit_user_registration_path
+            %li
+              = link_to "Log out", destroy_user_session_path, :method => :delete
+          - else
+            %li
+              = link_to "Log in", new_user_session_path
+            
+    .container
+      = yield

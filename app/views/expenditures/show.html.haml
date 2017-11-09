@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Value:
+  = @expenditure.value
+%p
+  %b Name:
+  = @expenditure.name
+%p
+  %b Group:
+  = @expenditure.group.name
+%p
+  %b Date:
+  = @expenditure.date.to_date
+%p.hide
+  %b User:
+  = @expenditure.user
+
+= link_to 'Edit', edit_expenditure_path(@expenditure)
+\|
+= link_to 'Back', expenditures_path

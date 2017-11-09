@@ -1,0 +1,27 @@
+%h1 Listing expenditures
+
+%table
+  %thead
+    %tr
+      %th Value
+      %th Name
+      %th Group
+      %th Date
+      %th
+      %th
+      %th
+
+  %tbody
+    - @expenditures.each do |expenditure|
+      %tr
+        %td= expenditure.value
+        %td= expenditure.name
+        %td= expenditure.group.name
+        %td= expenditure.date.to_date
+        %td= link_to 'Show', expenditure
+        %td= link_to 'Edit', edit_expenditure_path(expenditure)
+        %td= link_to 'Destroy', expenditure, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Expenditure', new_expenditure_path
